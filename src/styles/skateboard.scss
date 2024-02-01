@@ -1,0 +1,247 @@
+// color
+$color-bg: rgba(255, 204, 204,1.0);
+$color-board-front: #525655;
+$color-board-back: #FFC038;
+$color-tire: #59BBD0;
+$color-black: #2E2230;
+
+// board
+$board-center-size: 150;
+$board-side-size: 40;
+$board-height: 30;
+$move: 5s;
+
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($animation-name) {
+  -webkit-animation: $animation-name;
+  -moz-animation: $animation-name;
+  animation: $animation-name;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@mixin prefixes($property, $value) {
+  @each $prefix in -webkit-, -moz-, -ms-, -o-, "" {
+    #{$prefix}#{$property}: $value;
+  }
+}
+
+.wrapper {
+  background: $color-bg;
+  width: 100vw;
+  height: 150px;
+  margin: auto;
+  overflow-y: no-scroll;
+  bottom: 0;
+  transform: translate(0,0);
+}
+
+.board {
+  $base: &;
+  position: absolute;
+  left: 15px;
+  bottom: 50%;
+  z-index: 10;
+  @include prefixes(transform-style, preserve-3d);
+  &.kickflip {
+    @include animation(kickflip $move linear infinite);
+  }
+  &.ollie {
+    @include animation(ollie $move linear infinite);
+  }
+  &.cruise {
+    @include animation(cruise 3s linear infinite);
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    @include prefixes(transform-style, preserve-3d);
+
+    &--front {
+      z-index: 100;
+      @include prefixes(transform, translateY(0));
+      @include animation(board_front $move linear infinite);
+
+      #{$base}__center {
+        background: $color-board-front;
+      }
+
+      #{$base}__side {
+        background: $color-board-front;
+      }
+    }
+
+    &--back {
+      @include prefixes(transform, translateY(1px));
+      @include animation(board_back $move linear infinite);
+      z-index: 5;
+
+      #{$base}__center {
+        background: $color-board-back;
+      }
+
+      #{$base}__side {
+        background: $color-board-back;
+      }
+    }
+  }
+
+  &__center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: $board-center-size + px;
+    height: $board-height + px;
+    background: $color-board-front;
+    overflow: hidden;
+    text-align: center;
+    @include prefixes(transform-style, preserve-3d);
+    @include prefixes(justify-content, center);
+    @include prefixes(transform, rotateX(-90deg));
+  }
+
+  &__side {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: $board-height + px;
+    height: $board-side-size + px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    text-align: center;
+    @include prefixes(justify-content, center);
+    @include prefixes(transform-origin, bottom);
+
+    &--right {
+      border-radius: 50% 50% 0 0;
+      @include prefixes(
+                      transform,
+                      rotateY(90deg) translateZ(135px) rotateX(-65deg)
+      );
+    }
+
+    &--left {
+      border-radius: 50% 50% 0 0;
+      @include prefixes(
+                      transform,
+                      rotateY(90deg) translateZ(-15px) rotateX(65deg)
+      );
+    }
+  }
+
+  &__tires {
+    position: absolute;
+    top: 3px;
+    z-index: 1;
+    @include prefixes(transform-style, preserve-3d);
+  }
+
+  &__tire {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: $color-tire;
+    z-index: 5;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $color-tire;
+    }
+
+    span {
+      position: absolute;
+      top: 2px;
+      left: 1px;
+      width: 15px;
+      height: 15px;
+      border-left: 2px solid #D3D3D3;
+      border-right: 1px solid #D3D3D3;
+      border-radius: 50%;
+      @include animation(tires 0.3s linear infinite);
+
+      &:before {
+        top: 6px;
+        right: 4px;
+        background: #525655;
+        width: 5px;
+        height: 5px;
+        border-radius: 90% 30%;
+      }
+    }
+
+    &:nth-of-type(1) {
+      @include prefixes(transform, translateZ(-5px));
+    }
+
+    &:nth-of-type(2) {
+      @include prefixes(transform, translateZ(10px));
+    }
+
+    &:nth-of-type(3) {
+      left: 120px;
+      @include prefixes(transform, translateZ(-5px));
+    }
+
+    &:nth-of-type(4) {
+      left: 120px;
+      @include prefixes(transform, translateZ(10px));
+    }
+  }
+}
+
+
+@include keyframes(tires) {
+  0% { @include prefixes(transform, rotate(0)); }
+  100% { @include prefixes(transform, rotate(360deg)); }
+}
+
+
+@include keyframes(kickflip) {
+  0% { @include prefixes(transform, scale(0.8) translate(-30vw, 0) rotateX(-10deg) rotateZ(0)); }
+  45% { @include prefixes(transform, scale(0.8) translate(45vw, 0) rotateX(-10deg) rotateZ(0)); }
+  50% { @include prefixes(transform, scale(0.8) translate(50vw, -50px) rotateX(-180deg) rotateZ(-10deg)); }
+  55% { @include prefixes(transform, scale(0.8) translate(55vw, -50px)rotateX(180deg) rotateZ(-10deg)); }
+  60% { @include prefixes(transform, scale(0.8) translate(60vw, 0) rotateX(-10deg) rotateZ(0)); }
+  100% { @include prefixes(transform, scale(0.8) translate(130vw, 0) rotateX(-10deg) rotateZ(0)); }
+}
+
+@include keyframes(ollie) {
+  0% { @include prefixes(transform, scale(0.8) translate(-30vw, 0) rotateX(-10deg) rotateZ(0)); }
+  45% { @include prefixes(transform, scale(0.8) translate(45vw, 0) rotateX(-10deg) rotateZ(0)); }
+  50% { @include prefixes(transform, scale(0.8) translate(50vw, -100px) rotateX(-10deg) rotateZ(-10deg)); }
+  55% { @include prefixes(transform, scale(0.8) translate(55vw, -100px)rotateX(-10deg) rotateZ(0)); }
+  60% { @include prefixes(transform, scale(0.8) translate(60vw, 0) rotateX(-10deg) rotateZ(0)); }
+  100% { @include prefixes(transform, scale(0.8) translate(130vw, 0) rotateX(-10deg) rotateZ(0)); }
+}
+
+@include keyframes(cruise) {
+  0% { @include prefixes(transform, scale(0.8) translate(-30vw, 0) rotateX(-10deg) rotateZ(0)); }
+  100% { @include prefixes(transform, scale(0.8) translate(130vw, 0) rotateX(-10deg) rotateZ(0)); }
+}

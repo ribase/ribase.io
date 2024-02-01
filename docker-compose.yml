@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  client:
+    image: node:18-alpine
+    ports:
+      - 3000:80
+    volumes:
+      - ./src/app:/app
+    labels:
+      - "traefik.http.middlewares.httpsonly.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.httpsonly.redirectscheme.permanent=true"
+      - "traefik.http.routers.ribaseio.rule=Host(`www.ribase.io`)"
+      - "traefik.http.routers.ribaseio.tls=true"
+      - "traefik.http.routers.ribaseio.tls.certresolver=letsencrypt"
+    networks:
+      - traefik-public
+    command: npm run build && npm run start
+networks:
+  traefik-public:
+    external: true
