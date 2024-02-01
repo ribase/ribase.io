@@ -14,7 +14,7 @@ export default function About({ entry } : {entry: any}) {
                     <div className={"col-12"}>
                         {entry.fields.about && (
                             <>
-                                <div className={"about--text"} key={entry.fields.about.id}>
+                                <div className={"about--text"} key={"about"}>
                                     {textHelpers.renderRichText(entry.fields.about)}
                                 </div>
                             </>
