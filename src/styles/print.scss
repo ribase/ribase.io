@@ -1,0 +1,38 @@
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+  #front, .skateboard--divider, .navbar {
+    display: none;
+  }
+  #skills {
+    page-break-after: always;
+  }
+  #cv--entries {
+    padding-top: 0;
+    width: 100%;
+  }
+  .timeline-item {
+    padding-left: 0;
+    width: 210mm;
+    height: 297mm;
+    page-break-after: always;
+    .timeline-marker {
+      display: none;
+    }
+    .timeline-content {
+      ul {
+        padding-left: 0;
+      }
+    }
+  }
+  .progress {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    .progress-bar {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+}

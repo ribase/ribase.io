@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import {ContentType, createClient} from 'contentful';
-import Timeline from '../components/fragments/timeline';
+import { createClient } from 'contentful';
 import SkateboardComponent from "../components/fragments/skateboard";
 import Front from "@/components/front";
 import About from "@/components/about";
@@ -48,23 +47,23 @@ export default function Home({ entries }: {entries:Array<any>}) {
                             <Front/>
                         </div>
 
-                        <div>
+                        <div className={"skateboard--divider"}>
                             <SkateboardComponent animationType={"kickflip"}/>
                         </div>
 
                         <div id={"skills"}>
-                            <About entry={entry.fields} />
+                            <About entry={entry.fields}/>
                         </div>
 
-                        <div>
+                        <div className={"skateboard--divider"}>
                             <SkateboardComponent animationType={"kickflip"}/>
                         </div>
 
                         <div id={"cv--entries"}>
-                            <Cv entry={entry.fields.cvOverviewRelation} />
+                            <Cv entry={entry.fields.cvOverviewRelation}/>
                         </div>
 
-                        <div className={"pt-5"}>
+                        <div className={"skateboard--divider pt-5"}>
                             <SkateboardComponent animationType={"ollie"}/>
                         </div>
                     </div>

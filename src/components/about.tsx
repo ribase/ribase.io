@@ -1,28 +1,45 @@
 import {TextHelpers} from "@/utils/text-helpers";
-import {ContentType} from "contentful";
-import Timeline from "@/components/fragments/timeline";
 import Skills from "@/components/skills";
+import Accordion from 'react-bootstrap/Accordion';
 
 const textHelpers = new TextHelpers();
 export default function About({ entry } : {entry: any}) {
     return (
         <>
             <div className={"container"}>
-                <h1>About</h1>
                 <div className={"row"}>
                     <div className={"col-12"}>
-                        {entry.about && (
-                            <div>
-                                {textHelpers.renderRichText(entry.about)}
-                            </div>
-                        )}
+                        <h2 className={"text-start ms-0"}>About me</h2>
+                    </div>
+                    <div className={"col-12"}>
+                        <>
+                            {entry.about && (
+                                <div>
+                                    {textHelpers.renderRichText(entry.about)}
+                                </div>
+                            )}
+                        </>
+                    </div>
+                    <hr />
+                    <div className={"col-12"}>
+                        <h2 className={"text-start ms-0 mt-5"}>Skill summary</h2>
+                    </div>
+                    <div className={"col-12 mb-5"}>
+                        <Accordion defaultActiveKey="0">
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>How I Determine My Skill Levels</Accordion.Header>
+                                <Accordion.Body>
+                                    {textHelpers.renderRichText(entry.skillOverviewDisclaimer)}
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
                     </div>
                     {entry.skillsOverview.fields.skillCategories.map((skillCategories: any) => (
                         <>
-                            <div key={skillCategories.sys.id} className={"col-md-4 col-12"}>
-                                <h2>{skillCategories.fields.title}</h2>
+                            <div key={skillCategories.sys.id} className={"col-md-6 col-12 mb-5"}>
+                                <h3>{skillCategories.fields.title}</h3>
                                 {skillCategories && (
-                                    <Skills entry={skillCategories.fields.skills} />
+                                    <Skills entry={skillCategories.fields.skills}/>
                                 )}
                             </div>
                         </>
