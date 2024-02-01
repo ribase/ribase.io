@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Front() {
     // @ts-ignore
     return (
@@ -6,7 +8,7 @@ export default function Front() {
                 <div className="wrapper">
                     <div></div>
                     <div className="circletag" id="nay">
-                        <img src="/me.jpg" alt={"blah"}/>
+                        <Image src={"/me.jpg"} alt={"blah"}/>
                     </div>
                     <h1 className="typing-demo">
                         Hello, I&apos;m Sebastian
