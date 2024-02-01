@@ -15,7 +15,6 @@
     "@types/react-dom": "18.0.11",
     "contentful": "^9.3.3",
     "date-fns": "^2.29.3",
-    "eslint": "8.22.0",
     "eslint-config-next": "13.2.4",
     "moment": "^2.29.4",
     "next": "13.2.4",
@@ -27,5 +26,10 @@
     "remark-html": "^15.0.2",
     "sass": "^1.58.3",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

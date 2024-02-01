@@ -51,8 +51,8 @@ export default function Home({ entries }: {entries:Array<any>}) {
                             <SkateboardComponent animationType={"kickflip"}/>
                         </div>
 
-                        <div id={"skills"} key={"about"}>
-                            <About entry={entry}/>
+                        <div id={"skills"}>
+                            <About entry={entry} key={"about"}/>
                         </div>
 
                         <div className={"skateboard--divider"}>
