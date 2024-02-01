@@ -29,7 +29,7 @@ export default function About({ entry } : {entry: any}) {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>How I Determine My Skill Levels</Accordion.Header>
                                 <Accordion.Body>
-                                    {textHelpers.renderRichText(entry.skillOverviewDisclaimer)}
+                                    {textHelpers.renderRichText(entry.fields.skillOverviewDisclaimer)}
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
