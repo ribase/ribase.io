@@ -4,9 +4,9 @@ services:
   client:
     image: node:18-alpine
     ports:
-      - 3000:80
+      - 3000:3000
     volumes:
-      - ./src/app:/app
+      - ./:/app
     labels:
       - "traefik.http.middlewares.httpsonly.redirectscheme.scheme=https"
       - "traefik.http.middlewares.httpsonly.redirectscheme.permanent=true"
@@ -15,7 +15,7 @@ services:
       - "traefik.http.routers.ribaseio.tls.certresolver=letsencrypt"
     networks:
       - traefik-public
-    command: npm run build && npm run start
+    command: sh -c "npm install && npm run build && npm run start"
 networks:
   traefik-public:
     external: true
