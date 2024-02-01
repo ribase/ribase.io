@@ -12,13 +12,13 @@ export default function About({ entry } : {entry: any}) {
                         <h2 className={"text-start ms-0"}>About me</h2>
                     </div>
                     <div className={"col-12"}>
-                        <>
-                            {entry.about && (
-                                <div>
-                                    {textHelpers.renderRichText(entry.about)}
+                        {entry.fields.about && (
+                            <>
+                                <div className={"about--text"} key={entry.fields.about.id}>
+                                    {textHelpers.renderRichText(entry.fields.about)}
                                 </div>
-                            )}
-                        </>
+                            </>
+                        )}
                     </div>
                     <hr />
                     <div className={"col-12"}>
@@ -34,7 +34,7 @@ export default function About({ entry } : {entry: any}) {
                             </Accordion.Item>
                         </Accordion>
                     </div>
-                    {entry.skillsOverview.fields.skillCategories.map((skillCategories: any) => (
+                    {entry.fields.skillsOverview.fields.skillCategories.map((skillCategories: any) => (
                         <>
                             <div key={skillCategories.sys.id} className={"col-md-6 col-12 mb-5"}>
                                 <h3>{skillCategories.fields.title}</h3>

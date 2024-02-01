@@ -52,7 +52,7 @@ export default function Home({ entries }: {entries:Array<any>}) {
                         </div>
 
                         <div id={"skills"}>
-                            <About entry={entry.fields}/>
+                            <About entry={entry}/>
                         </div>
 
                         <div className={"skateboard--divider"}>
