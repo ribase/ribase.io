@@ -1,6 +1,7 @@
 import moment from "moment";
 import { TextHelpers } from "@/utils/text-helpers";
 import Skills from "../skills";
+import StringToDate from "./date";
 
 const textHelpers = new TextHelpers();
 
@@ -17,7 +18,7 @@ export default function Timeline({ entry } : {entry:any}) {
                                     <li key={cvEntry.sys.id}  className="timeline-item">
                                         <div className="timeline-info">
                                             <span>
-                                                {moment(cvEntry.fields.startDate).format('Y')} - {moment(cvEntry.fields.endDate).format('Y')}
+                                                <StringToDate dateString={cvEntry.fields.startDate} /> - <StringToDate dateString={cvEntry.fields.endDate} />
                                             </span>
                                         </div>
                                         <div className="timeline-marker"></div>
