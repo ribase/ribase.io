@@ -1,12 +1,12 @@
-import moment from "moment/moment";
 import React from "react";
+import moment from "moment";
 
 export default function StringToDate({ dateString } : { dateString: string }) {
-    const [date, setNow] = React.useState<number>(new Date(dateString).getFullYear());
+    const [date, setNow] = React.useState<string>(new Date(dateString).toUTCString());
 
     return (
         <>
-            { date }
+            { moment(date).format('Y') }
         </>
     )
 }
