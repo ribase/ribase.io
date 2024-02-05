@@ -1,12 +1,12 @@
 import moment from "moment/moment";
-import {useEffect, useState} from "react";
+import { useEffect } from "react";
 
 export default function StringToDate({ dateString } : { dateString: string }) {
-    const date: string = moment(dateString).format('Y');
+    const date: any = new Date(dateString).getFullYear();
 
     return (
         <>
-            {date}
+            { date }
         </>
     )
 }
