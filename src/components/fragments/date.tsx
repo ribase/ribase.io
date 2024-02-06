@@ -1,12 +1,15 @@
 import React from "react";
 import moment from "moment";
 
-export default function StringToDate({ dateString } : { dateString: string }) {
-    const [date, setNow] = React.useState<string>(new Date(dateString).toUTCString());
-    console.log(dateString);
+export default function StringToDate(
+    props: {
+        dateString: string,
+        format: string,
+    }
+) {
     return (
         <>
-            { moment(date).format('Y') }
+            { moment(props.dateString).format(props.format) }
         </>
     )
 }

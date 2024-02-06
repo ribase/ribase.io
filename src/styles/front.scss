@@ -1,4 +1,37 @@
+@keyframes spin {
+  0% {
+    transform:scale(0) rotate(-360deg);
+  }
+  100% {
+    transform:scale(1) rotate(360deg);
+  }
+}
+
 #front {
+  .close--egg {
+    text-align: right;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    width: 100vw;
+    z-index: 10000;
+  }
+  .easter--egg {
+    .easter--egg--container {
+      position: relative;
+      animation:spin 2s;
+      height: 100vh;
+    }
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9000;
+    background-color: black;
+  }
   .wrapper {
     width: 100vw;
     background-color: transparent;

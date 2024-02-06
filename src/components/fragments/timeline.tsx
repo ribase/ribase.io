@@ -18,10 +18,10 @@ export default function Timeline({ entry } : {entry:any}) {
                                     <li key={cvEntry.sys.id}  className="timeline-item">
                                         <div className="timeline-info">
                                             <span>
-                                                <StringToDate dateString={cvEntry.fields.startDate} /> - <StringToDate dateString={cvEntry.fields.endDate} />
+                                                <StringToDate dateString={cvEntry.fields.startDate} format={"Y"} /> - <StringToDate dateString={cvEntry.fields.endDate} format={"Y"} />
                                             </span>
                                         </div>
-                                        <div className="timeline-marker"></div>
+                                        <div className="timeline-marker"></div>,
                                         <div className="timeline-content">
                                             <h3 className="timeline-title">
                                                 {cvEntry.fields.title} - <br />

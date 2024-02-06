@@ -8,6 +8,9 @@ body {
   color: #525f7f;
   overflow-x: hidden;
 }
+html > body .old-tv * {
+  outline: none;
+}
 
 #skills, #front, #cv--entries {
   width: 100vw;
