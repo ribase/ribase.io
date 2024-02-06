@@ -1,6 +1,4 @@
 import Image from "next/image";
-import miamivice from '../../public/miamivice.mp3';
-import et from '../../public/et.mp3';
 import React from "react";
 import FormRange from "react-bootstrap/FormRange";
 import {random} from "nanoid";
@@ -37,11 +35,11 @@ export default function Front() {
     const channels = [
         {
             background: "url(/vice_v3_0022_final.gif) center / cover",
-            sound: miamivice
+            sound: "/miamivice.mp3",
         },
         {
             background: "url(/et.webp) center / cover",
-            sound: et
+            sound: "/et.mp3",
         }
     ]
 
@@ -78,7 +76,9 @@ export default function Front() {
             tvOn = true;
             return;
         } else {
-            audio = new Audio(channels[key].sound);
+            audio = new Audio();
+            audio.setAttribute('src',channels[key].sound);
+            audio.load();
             tvcontent.current.style.background=channels[key].background;
             audio.volume = 0.1
             audio.loop = true;
