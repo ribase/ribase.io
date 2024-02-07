@@ -85,12 +85,30 @@
     height: 300px;
     background: #E6E7ED;
     border-radius: 100%;
+    cursor: pointer;
+    outline: 0 solid rgb(255, 204, 204);
+    &:hover {
+      animation: pulse 1s infinite;
+    }
     img {
       height: 100%;
     }
   }
 }
 
+@keyframes pulse {
+  0% {
+    outline: 0 solid rgb(255, 204, 204);
+  }
+
+  50% {
+    outline: 10px solid rgb(255, 204, 204);
+  }
+
+  100% {
+    outline: 0 solid rgb(255, 204, 204);
+  }
+}
 
 @media screen and (max-width: 650px) {
   #front {

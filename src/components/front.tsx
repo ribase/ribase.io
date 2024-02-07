@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import FormRange from "react-bootstrap/FormRange";
-import {random} from "nanoid";
 
 export default function Front() {
     let audio: any = null;
@@ -40,6 +39,10 @@ export default function Front() {
         {
             background: "url(/et.webp) center / cover",
             sound: "/et.mp3",
+        },
+        {
+            background: "url(/bttf.webp) center / cover",
+            sound: "/bttf.mp3",
         }
     ]
 
@@ -112,7 +115,7 @@ export default function Front() {
                                        onChange={(event) => changeVolume(parseInt(event.target.value))}/>
                         </div>
                         <nav className="channel">
-                            <FormRange min={"0"} max={"1"} step={"1"} defaultValue={"0"} ref={tvchannel}
+                            <FormRange min={"0"} max={"2"} step={"1"} defaultValue={"0"} ref={tvchannel}
                                        onChange={(event) => changeChannel(parseInt(event.target.value))}/>
                         </nav>
                         <nav className="power off" ref={tvpower}>
