@@ -30,15 +30,15 @@ export default function Easteregg() {
 
     const channels = [
         {
-            background: "url(/vice_v3_0022_final.gif) center / cover",
+            background: "url(/ribase.io/vice_v3_0022_final.gif) center / cover",
             sound: "/miamivice.mp3",
         },
         {
-            background: "url(/et.webp) center / cover",
+            background: "url(/ribase.io/et.webp) center / cover",
             sound: "/et.mp3",
         },
         {
-            background: "url(/bttf.webp) center / cover",
+            background: "url(/ribase.io/bttf.webp) center / cover",
             sound: "/bttf.mp3",
         }
     ]
