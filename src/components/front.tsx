@@ -28,11 +28,11 @@ export default function Front() {
                     { show ? <Easteregg /> : null }
                 </div>
             </div>
-            <div className={"image--overlay"} style={{background: "url(/bmx.jpg) center / cover"}}>
+            <div className={"image--overlay"} style={{background: "url(/ribase.io/bmx.jpg) center / cover"}}>
                 <div className="wrapper">
                     <div></div>
                     <div className="circletag" id="nay" onClick={toggleEgg}>
-                        <Image fill={true} src={"/me.jpg"} alt={"blah"}
+                        <Image fill={true} src={"/ribase.io/me.jpg"} alt={"blah"}
                                sizes="{(max-width: 768px) 200p, (max-width: 1200px) 300px}"/>
                     </div>
                     <h1 className="typing-demo">
