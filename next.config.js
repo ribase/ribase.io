@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output:"export",
+  distDir: 'out', // Explicitly set the output directory
   reactStrictMode: true,
-  experimental: {
-    appDir: true,
+  images: {
+    unoptimized: true, // Disable image optimization for static export
   },
   webpack(config, options) {
     config.module.rules.push({
