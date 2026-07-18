@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output:"export",
+  output: "export",
+  basePath: "/ribase.io",
+  assetPrefix: "/ribase.io/",
   distDir: 'out', // Explicitly set the output directory
   reactStrictMode: true,
   images: {
